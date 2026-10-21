@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_reward_list" model="ir.ui.view">
+        <field name="name">employee.reward.list</field>
+        <field name="model">employee.reward</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id"/>
+                <field name="reward_type_id"/>
+                <field name="reward_category"/>
+                <field name="disbursement_type"/>
+                <field name="date"/>
+                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="days" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'" decoration-warning="state == 'draft'" decoration-danger="state == 'rejected'" decoration-info="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_reward_form" model="ir.ui.view">
+        <field name="name">employee.reward.form</field>
+        <field name="model">employee.reward</field>
+        <field name="arch" type="xml">
+            <form string="مكافأة موظف">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="approved,draft,paid"/>
+                    <button string="اعتماد" name="action_approve" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button string="إلغاء" name="action_cancel" type="object" class="btn btn-danger" invisible="state != 'approved'"/>
+                </header>
+                <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button"
+                            type="object"
+                            name="action_open_employee_rewards"
+                            icon="fa-gift">
+                        <field string="المكافأة" name="reward_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_stat_button"
+                            type="object"
+                            name="action_view_payments"
+                            icon="fa-credit-card"
+                            invisible="payment_count == 0">
+                        <field string="الدفعات" name="payment_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_stat_button"
+                            type="object"
+                            name="action_open_payslips"
+                            icon="fa-money"
+                            invisible="disbursement_type != 'payroll'">
+                        <field string="مقبوضات راتب" name="payslip_count" widget="statinfo"/>
+                    </button>
+                </div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'" options="{'no_create': 1}"/>
+                            <field name="user_id" readonly="state != 'draft'" options="{'no_create': 1}"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="reward_type_id" string="نوع المكافأة" readonly="state != 'draft'" options="{'no_open': 1, 'no_create': 1}"/>
+                            <field name="reward_category" readonly="1"/>
+                        </group>
+                        <group>
+                            <field name="disbursement_type" widget="radio" readonly="state != 'draft'"/>
+                            <field name="paid_amount" invisible="disbursement_type != 'payment'"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="date" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="month" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="year" widget="char" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="apply_type" widget="radio" options="{'horizontal': true}" readonly="state != 'draft'"/>
+                            <field name="amount" invisible="apply_type != 'amount'" readonly="state != 'draft'"/>
+                            <field name="days" invisible="apply_type != 'days'" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note" readonly="state != 'draft'"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_employee_reward" model="ir.actions.act_window">
+        <field name="name">المكافآت</field>
+        <field name="res_model">employee.reward</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_employee_reward"
+              name="مكافآت"
+              action="action_employee_reward"
+              parent="menu_hr_incentives_root"
+              sequence="20"/>
+</odoo>

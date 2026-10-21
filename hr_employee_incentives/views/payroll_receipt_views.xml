@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_payroll_receipt_list" model="ir.ui.view">
+        <field name="name">payroll.receipt.list</field>
+        <field name="model">payroll.receipt</field>
+        <field name="arch" type="xml">
+            <list create="0" edit="0" decoration-danger="effect == 'deduction' and state != 'cancelled'"
+                  decoration-success="effect == 'addition' and state != 'cancelled'"
+                  decoration-muted="state == 'cancelled'">
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="name"/>
+                <field name="receipt_type"/>
+                <field name="effect"/>
+                <field name="apply_type" optional="hide"/>
+                <field name="amount"/>
+                <field name="net_amount" sum="الصافي"/>
+                <field name="state" widget="badge"/>
+                <field name="payslip_id" optional="show"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_payroll_receipt_form" model="ir.ui.view">
+        <field name="name">payroll.receipt.form</field>
+        <field name="model">payroll.receipt</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <header>
+                    <button name="action_open_source" string="فتح السجل الأصلي" type="object"
+                            invisible="not source_id"/>
+                    <field name="state" widget="statusbar" statusbar_visible="pending,included"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="name"/>
+                            <field name="date"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        <group>
+                            <field name="receipt_type"/>
+                            <field name="effect"/>
+                            <field name="apply_type"/>
+                            <field name="amount"/>
+                            <field name="net_amount"/>
+                            <field name="payslip_id"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="source_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_payroll_receipt_search" model="ir.ui.view">
+        <field name="name">payroll.receipt.search</field>
+        <field name="model">payroll.receipt</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id"/>
+                <field name="name"/>
+                <filter name="f_pending" string="معلّق" domain="[('state','=','pending')]"/>
+                <filter name="f_included" string="داخل كشف المرتب" domain="[('state','=','included')]"/>
+                <filter name="f_penalty" string="جزاءات" domain="[('receipt_type','=','penalty')]"/>
+                <filter name="f_reward" string="مكافآت" domain="[('receipt_type','=','reward')]"/>
+                <filter name="f_active" string="غير الملغاة" domain="[('state','!=','cancelled')]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter name="g_employee" string="الموظف" context="{'group_by':'employee_id'}"/>
+                    <filter name="g_month" string="الشهر" context="{'group_by':'date:month'}"/>
+                    <filter name="g_type" string="النوع" context="{'group_by':'receipt_type'}"/>
+                    <filter name="g_state" string="الحالة" context="{'group_by':'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_payroll_receipt" model="ir.actions.act_window">
+        <field name="name">مقبوضات الراتب</field>
+        <field name="res_model">payroll.receipt</field>
+        <field name="view_mode">list,form</field>
+        <field name="context">{'search_default_f_active': 1, 'search_default_g_employee': 1, 'search_default_g_month': 1}</field>
+    </record>
+
+    <menuitem id="menu_payroll_receipt"
+              name="مقبوضات الراتب"
+              parent="menu_hr_incentives_root"
+              action="action_payroll_receipt"
+              sequence="50"/>
+</odoo>

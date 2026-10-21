@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_reward_type_list" model="ir.ui.view">
+        <field name="name">reward.type.list</field>
+        <field name="model">reward.type</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="reward_category"/>
+                <field name="apply_type"/>
+                <field name="value" invisible="apply_type != 'amount'"/>
+                <field name="days" invisible="apply_type != 'days'"/>
+                <field name="disbursement_type"/>
+                <field name="currency_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_reward_type_form" model="ir.ui.view">
+        <field name="name">reward.type.form</field>
+        <field name="model">reward.type</field>
+        <field name="arch" type="xml">
+            <form string="نوع المكافأة" readonly= "state == 'approved'">
+                <sheet>
+                    <header>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,approved,cancel"/>
+
+                        <button name="action_approve"
+                                string="اعتماد"
+                                type="object"
+                                class="btn-primary"
+                                invisible="state != 'draft'"/>
+
+                        <button name="action_cancel"
+                                string="إلغاء"
+                                type="object"
+                                class="btn-danger"
+                                invisible="state == 'cancel'"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name" readonly= "state == 'approved'"/>
+                            <field name="reward_category" widget="radio" options="{'horizontal': true}" readonly= "state == 'approved'"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="apply_type" widget="radio" options="{'horizontal': true}" readonly= "state == 'approved'"/>
+                            <field name="value" invisible="apply_type != 'amount'" readonly= "state == 'approved'"/>
+                            <field name="days" invisible="apply_type != 'days'" readonly= "state == 'approved'"/>
+                            <field name="disbursement_type" widget="radio" readonly= "state == 'approved'"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_reward_type" model="ir.actions.act_window">
+        <field name="name">أنواع المكافآت</field>
+        <field name="res_model">reward.type</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_reward_type"
+              name="أنواع المكافآت"
+              action="action_reward_type"
+              parent="menu_configuration_category"
+              sequence="20"/>
+</odoo>

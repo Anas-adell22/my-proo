@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Employee Penalties, Rewards, Petitions & Grievances',
+    'version': '2.3',
+    'summary': 'Manage Employee Penalties, Rewards, Petitions and Grievances in one module',
+    'author': 'You Can',
+    'depends': ['base', 'hr', 'hr_payroll', 'mail', 'account'],
+    'data': [
+        'data/payslip_input_type.xml',
+        'data/grievance_sequence.xml',
+        'data/petition_sequence.xml',
+        'security/ir.model.access.csv',
+        'views/base_menu.xml',
+        'views/penalty_type_views.xml',
+        'views/reward_type_views.xml',
+        'views/employee_penalty_views.xml',
+        'views/employee_reward_views.xml',
+        'views/petition_views.xml',
+        'views/grievance_views.xml',
+        'views/payroll_receipt_views.xml',
+    ],
+    'images': ['hr_employee_incentives/static/description/hr_penalty.png'],
+    'application': True,
+    'installable': True,
+    'auto_install': False,
+    'license': 'LGPL-3',
+}

@@ -1,0 +1,749 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* hr_employee_incentives
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-14 13:15+0000\n"
+"PO-Revision-Date: 2026-05-14 16:23+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ar_001\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);\n"
+"X-Generator: Poedit 3.9\n"
+
+#. module: hr_employee_incentives
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid ""
+"<span invisible=\"apply_type != 'days'\">أيام</span>\n"
+"                                <span invisible=\"apply_type != 'amount'\">جنيه</span>"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_needaction
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_needaction
+msgid "Action Needed"
+msgstr "الإجراء المطلوب"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_ids
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_ids
+msgid "Activities"
+msgstr "أنشطة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_exception_decoration
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة استثناء النشاط"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_state
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_type_icon
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "رمز نوع النشاط"
+
+#. module: hr_employee_incentives
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid "Approve"
+msgstr "الموافقة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__state__approved
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__state__approved
+msgid "Approved"
+msgstr "موافقة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__4
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__4
+msgid "April"
+msgstr "ابريل"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_attachment_count
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__8
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__8
+msgid "August"
+msgstr "أغسطس"
+
+#. module: hr_employee_incentives
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid "Cancel"
+msgstr "إلغاء"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__state__cancelled
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__state__cancelled
+msgid "Cancelled"
+msgstr "تم الإلغاء"
+
+#. module: hr_employee_incentives
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_configuration_category
+msgid "Configuration"
+msgstr "إعدادات"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__create_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__create_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__create_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__create_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__create_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__create_uid
+msgid "Created by"
+msgstr "تم إنشاؤه بواسطة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__create_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__create_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__create_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__create_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__create_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__create_date
+msgid "Created on"
+msgstr "تم الإنشاء بتاريخ"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__currency_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__currency_id
+msgid "Currency"
+msgstr "عملة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__date
+msgid "Date"
+msgstr "تاريخ"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__12
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__12
+msgid "December"
+msgstr "ديسمبر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__state__discounted
+msgid "Discounted"
+msgstr "مخصوم"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__display_name
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__display_name
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__display_name
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__display_name
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__display_name
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__display_name
+msgid "Display Name"
+msgstr "عرض الاسم"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__state__draft
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__state__draft
+msgid "Draft"
+msgstr "مسوده"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__employee_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__employee_id
+msgid "Employee"
+msgstr "موظف"
+
+#. module: hr_employee_incentives
+#: model:ir.actions.act_window,name:hr_employee_incentives.action_employee_penalty
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_employee_penalty
+msgid "Employee Penalties"
+msgstr "مخالفات الموظف"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_employee_penalty
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+msgid "Employee Penalty"
+msgstr "مخالفة الموظف"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_employee_reward
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid "Employee Reward"
+msgstr "مكافأة الموظف"
+
+#. module: hr_employee_incentives
+#: model:ir.actions.act_window,name:hr_employee_incentives.action_employee_reward
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_employee_reward
+msgid "Employee Rewards"
+msgstr "مكافأت الموظف"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__2
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__2
+msgid "February"
+msgstr "فبراير"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_follower_ids
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_follower_ids
+msgid "Followers"
+msgstr "متابعين"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_partner_ids
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "متابعين(شركاء)"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__activity_type_icon
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr "أيقونة Font Awesome، على سبيل المثال fa-tasks"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__has_message
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__has_message
+msgid "Has Message"
+msgstr "لديه رسالة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__id
+msgid "ID"
+msgstr "رقم تعريفي"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_exception_icon
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_exception_icon
+msgid "Icon"
+msgstr "رمز"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__activity_exception_icon
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "رمز للإشارة إلى نشاط استثنائي."
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__message_needaction
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم تحديد هذا الخيار، فإن الرسائل الجديدة تتطلب انتباهك."
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__message_has_error
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__message_has_sms_error
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__message_has_error
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__message_has_sms_error
+msgid "If checked, some messages have a delivery error."
+msgstr "في حال تم التحقق، قد تحتوي بعض الرسائل على خطأ في التسليم."
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_is_follower
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_is_follower
+msgid "Is Follower"
+msgstr "هل هو متابع ؟"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__1
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__1
+msgid "January"
+msgstr "يناير"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__7
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__7
+msgid "July"
+msgstr "يوليو"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__6
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__6
+msgid "June"
+msgstr "يونيو"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__write_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__write_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__write_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__write_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__write_uid
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__write_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__write_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__write_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__write_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__write_date
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث بتاريخ"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__line_ids
+msgid "Line"
+msgstr "سطر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__line_ids
+msgid "Lines"
+msgstr "أسطر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__3
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__3
+msgid "March"
+msgstr "مارس"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__5
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__5
+msgid "May"
+msgstr "مايو"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_has_error
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_ids
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_ids
+msgid "Messages"
+msgstr "رسائل"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__month
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__month
+msgid "Month"
+msgstr "شهر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__my_activity_date_deadline
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "الموعد النهائي لنشاطي"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type__name
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type__name
+msgid "Name"
+msgstr "اسم"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_calendar_event_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_calendar_event_id
+msgid "Next Activity Calendar Event"
+msgstr "حدث تقويم النشاط التالي"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_date_deadline
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_summary
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_type_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__note
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__note
+msgid "Note"
+msgstr "ملاحظة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__11
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__11
+msgid "November"
+msgstr "نوفمبر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_needaction_counter
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_has_error_counter
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الأخطاء"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__message_needaction_counter
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__message_needaction_counter
+msgid "Number of messages requiring action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__message_has_error_counter
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__10
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__10
+msgid "October"
+msgstr "أكتوبر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__state__paid
+msgid "Paid"
+msgstr "مدفوع"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_hr_payslip
+msgid "Pay Slip"
+msgstr "إيصال الدفع"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_hr_payslip_input
+msgid "Payslip Input"
+msgstr "مدخل إيصال الدفع"
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_penalties_category
+msgid "Penalties"
+msgstr "مخالفات"
+
+#. module: hr_employee_incentives
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_hr_incentives_root
+msgid "Penalties & Rewards"
+msgstr "مخالفات و مكافأت"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_hr_payslip_input__penalty_id
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+msgid "Penalty"
+msgstr "مخالفة"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_penalty_type
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__penalty_type_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__penalty_type_id
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_penalty_type_form
+msgid "Penalty Type"
+msgstr "نوع المخالفة"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_penalty_type_line
+msgid "Penalty Type Line"
+msgstr "سطر أنواع المخالفة"
+
+#. module: hr_employee_incentives
+#: model:ir.actions.act_window,name:hr_employee_incentives.action_penalty_type
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_penalty_type
+msgid "Penalty Types"
+msgstr "أنواع المخالفة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__rating_ids
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__rating_ids
+msgid "Ratings"
+msgstr "تقيمات"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__state__rejected
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__state__rejected
+msgid "Rejected"
+msgstr "مرفوض"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__activity_user_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__activity_user_id
+msgid "Responsible User"
+msgstr "المستخدم المسؤول "
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_hr_payslip_input__reward_id
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid "Reward"
+msgstr "جائزة"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_reward_type
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__reward_type_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__reward_type_id
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_reward_type_form
+msgid "Reward Type"
+msgstr "نوع المكافأة"
+
+#. module: hr_employee_incentives
+#: model:ir.actions.act_window,name:hr_employee_incentives.action_reward_type
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_reward_type
+msgid "Reward Types"
+msgstr "أنواع المكافأة"
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+#: model:ir.ui.menu,name:hr_employee_incentives.menu_rewards_category
+msgid "Rewards"
+msgstr "مكافأت"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__message_has_sms_error
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "خطأ في تسليم الرسائل القصيرة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__month__9
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__month__9
+msgid "September"
+msgstr "سبتمبر"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__state
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__state
+msgid "State"
+msgstr "حالة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__activity_state
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+"الحالة: بناءً على الأنشطة\n"
+"متأخر: تاريخ الاستحقاق قد انقضى\n"
+"اليوم: تاريخ النشاط هو اليوم\n"
+"المخطط له: أنشطة مستقبلية."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "There is a reward for this record in payslips."
+msgstr "توجد مكافأة لهذا الإنجاز في كشوف المرتبات."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "There is deduction for this penalty in payslips."
+msgstr "يتم خصم هذه الغرامة من كشوف المرتبات."
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__activity_exception_decoration
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع النشاط الاستثنائي المسجل."
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__value_label
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__value_label
+msgid "Value Label"
+msgstr "قيمة"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__website_message_ids
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__website_message_ids
+msgid "Website Messages"
+msgstr "رسائل الموقع"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_penalty__website_message_ids
+#: model:ir.model.fields,help:hr_employee_incentives.field_employee_reward__website_message_ids
+msgid "Website communication history"
+msgstr "تاريخ اتصالات الموقع"
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__year
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__year
+msgid "Year"
+msgstr "سنه"
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You can only approve a draft record."
+msgstr "لا يمكنك الموافقة إلا على مسودة السجل."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You can only cancel an approved record."
+msgstr "لا يمكنك إلغاء سوى سجل معتمد."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You can only discount an approved record."
+msgstr "لا يمكنك استبعاد أي سجل معتمد."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You can only mark an approved record as paid."
+msgstr "لا يمكنك وضع علامة \"مدفوع\" على سجل تمت الموافقة عليه إلا."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You can only reject a draft record."
+msgstr "لا يمكنك رفض سوى سجل المسودة."
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You cannot set penalty for a future date"
+msgstr "لا يمكنك تحديد غرامة لتاريخ لاحق"
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+msgid "You cannot set reward for a future date"
+msgstr "لا يمكنك تحديد مكافأة لتاريخ لاحق"
+
+#. module: hr_employee_incentives
+#: model:ir.model,name:hr_employee_incentives.model_reward_type_line
+msgid "reward.type.line"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__apply_type__days
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__apply_type__days
+msgid "أيام"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__computed_amount
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__computed_amount
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__value
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__value
+msgid "القيمة"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__amount
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__amount
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__penalty_type_line__deduction_type__amount
+msgid "المبلغ"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__penalty_count
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+msgid "المخالفات"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__user_id
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__user_id
+msgid "المسؤول"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid "المكافأة"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__reward_count
+msgid "المكافأت"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__description
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__description
+msgid "الوصف"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__penalty_type_line__deduction_type__days
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__reward_type_line__reward_type__days
+msgid "ايام"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_penalty_type_form
+msgid "بنود"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__repetition
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__repetition
+msgid "عدد المرات"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__repetition_count
+msgid "عدد مرات المكافأة"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__repetition_count
+msgid "عدد مرات مخالفات"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_penalty__apply_type__amount
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__employee_reward__apply_type__amount
+#: model:ir.model.fields.selection,name:hr_employee_incentives.selection__reward_type_line__reward_type__amount
+msgid "مبلغ"
+msgstr ""
+
+#. module: hr_employee_incentives
+#. odoo-python
+#: code:addons/hr_employee_incentives/models/employee_incentives.py:0
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__payslip_count
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__payslip_count
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_penalty_form
+#: model_terms:ir.ui.view,arch_db:hr_employee_incentives.view_employee_reward_form
+msgid "مقبوضات راتب"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_penalty__apply_type
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__deduction_type
+msgid "نوع الخصم"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_penalty_type_line__penalty_type
+msgid "نوع المخالفة"
+msgstr ""
+
+#. module: hr_employee_incentives
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_employee_reward__apply_type
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__reward_type
+#: model:ir.model.fields,field_description:hr_employee_incentives.field_reward_type_line__rewards_type
+msgid "نوع المكافأة"
+msgstr ""

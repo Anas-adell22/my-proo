@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem id="menu_hr_incentives_root"
+              name="الجزاءات والمكافآت"
+              web_icon="hr_employee_incentives,static/description/hr_penalty.png"
+              sequence="10"/>
+
+    <menuitem id="menu_configuration_category"
+              name="الإعدادات"
+              parent="menu_hr_incentives_root"
+              sequence="100"/>
+</odoo>
