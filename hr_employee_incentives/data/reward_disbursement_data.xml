@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- تحديث طريقة الصرف للمكافآت المسودة حسب التصنيف -->
+    <function model="employee.reward" name="_update_draft_disbursement"/>
+    <!-- تسجيل متبقي المكافآت المصروفة بدفعة جزئية في مقبوضات الراتب -->
+    <function model="employee.reward" name="_resync_payment_rewards"/>
+</odoo>

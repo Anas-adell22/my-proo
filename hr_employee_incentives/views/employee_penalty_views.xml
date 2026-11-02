@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_employee_penalty_list" model="ir.ui.view">
+        <field name="name">employee.penalty.list</field>
+        <field name="model">employee.penalty</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id"/>
+                <field name="penalty_type_id"/>
+                <field name="date"/>
+                <field name="amount" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                <field name="days" optional="show"/>
+                <field name="state" widget="badge" decoration-success="state == 'approved'" decoration-warning="state == 'draft'" decoration-danger="state == 'rejected'" decoration-info="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_employee_penalty_form" model="ir.ui.view">
+        <field name="name">employee.penalty.form</field>
+        <field name="model">employee.penalty</field>
+        <field name="arch" type="xml">
+            <form string="جزاء موظف">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="approved,draft,discounted"/>
+                    <button string="اعتماد" name="action_approve" type="object" class="oe_highlight" invisible="state != 'draft'"/>
+                    <button string="إلغاء" name="action_cancel" type="object" class="btn btn-danger" invisible="state != 'approved'"/>
+                </header>
+                <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button"
+                            type="object"
+                            name="action_open_employee_penalties"
+                            icon="fa-exclamation-triangle">
+                        <field string="المخالفات" name="penalty_count" widget="statinfo"/>
+                    </button>
+                    <button class="oe_stat_button"
+                            type="object"
+                            name="action_open_payslips"
+                            icon="fa-money">
+                        <field string="مقبوضات راتب" name="payslip_count" widget="statinfo"/>
+                    </button>
+                </div>
+                    <group>
+                        <group>
+                            <field name="employee_id" readonly="state != 'draft'" options="{'no_create': 1}"/>
+                            <field name="user_id" readonly="state != 'draft'" options="{'no_create': 1}"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="penalty_type_id" string="نوع الجزاء" readonly="state != 'draft'" options="{'no_open': 1, 'no_create': 1}"/>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="date" readonly="state != 'draft'"/>
+                            </group>
+                            <group>
+                                <field name="month" readonly="1"/>
+                            </group>
+                            <group>
+                                <field name="year" widget="char" readonly="1"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="apply_type" widget="radio" options="{'horizontal': true}" readonly="state != 'draft'"/>
+                            <field name="amount" invisible="apply_type != 'amount'" readonly="state != 'draft'"/>
+                            <field name="days" invisible="apply_type != 'days'" readonly="state != 'draft'"/>
+                        </group>
+                    </group>
+                    <group>
+                        <field name="note" readonly="state != 'draft'"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_employee_penalty" model="ir.actions.act_window">
+        <field name="name">الجزاءات</field>
+        <field name="res_model">employee.penalty</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_employee_penalty"
+              name="الجزاءات"
+              action="action_employee_penalty"
+              parent="menu_hr_incentives_root"
+              sequence="10"/>
+</odoo>
