@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_reconciliation_period,reconciliation.period,model_reconciliation_period,base.group_user,1,1,1,1
+access_reconciliation_period_option,reconciliation.period.option,model_reconciliation_period_option,base.group_user,1,0,0,0
+access_reconciliation_balance_type,reconciliation.balance.type,model_reconciliation_balance_type,base.group_user,1,0,0,0
+access_reconciliation_period_line,reconciliation.period.line,model_reconciliation_period_line,base.group_user,1,1,1,1
+access_reconciliation_request,reconciliation.request,model_reconciliation_request,base.group_user,1,1,1,1

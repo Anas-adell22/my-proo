@@ -1,0 +1,299 @@
+<odoo>
+    <record id="view_reconciliation_period_form" model="ir.ui.view">
+        <field name="name">reconciliation.period.form</field>
+        <field name="model">reconciliation.period</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_start" type="object"
+                            string="بدء التنفيذ" class="btn-primary"
+                            invisible="state != 'draft'"/>
+                    <button name="action_done" type="object"
+                            string="إنهاء" class="btn-primary"
+                            invisible="state != 'in_progress'"/>
+                    <button name="action_cancel" type="object"
+                            string="إلغاء"
+                            invisible="state not in ('draft', 'in_progress')"/>
+                    <button name="action_draft" type="object"
+                            string="إعادة لمسودة"
+                            invisible="state != 'cancelled'"/>
+                    <field name="state" widget="statusbar"
+                           statusbar_visible="draft,in_progress,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="years_count" readonly="state == 'done'"/>
+                        <field name="period_type" widget="radio" readonly="state == 'done'"/>
+                        <field name="min_key" invisible="1"/>
+                        <field name="max_key" invisible="1"/>
+                        <field name="option_id"
+                               domain="[('period_type', '=', period_type), ('sort_key', '&gt;=', min_key), ('sort_key', '&lt;=', max_key)]"
+                               options="{'no_create': True, 'no_open': True}" readonly="state == 'done'"/>
+                        <field name="date" readonly="state == 'done'"/>
+                        <field name="company_id" options="{'no_create': True}" readonly="state == 'done'" groups="base.group_multi_company"/>
+                        <field name="company_id" invisible="1" groups="!base.group_multi_company"/>
+                        <field name="user_id"
+                               options="{'no_create': True}" readonly="state == 'done'"/>
+                        <field name="balance_type_ids" widget="many2many_tags"
+                               options="{'no_create': True}" readonly="state == 'done'"/>
+                    </group>
+                    <div class="d-flex gap-2 mb-3">
+                        <button name="action_load_customers" type="object"
+                                string="جلب العملاء" class="btn-primary"
+                                invisible="state in ('done', 'cancelled')"/>
+                        <button name="action_print_report" type="object"
+                                string="طباعة مطابقة"
+                                class="btn-secondary"
+                                invisible="not request_ids"/>
+                    </div>
+                    <notebook>
+                        <page string="العملاء">
+                            <div class="d-flex align-items-center mb-2">
+                                    <label for="select_all" class="mb-0 me-2"/>
+                                    <field name="select_all"/>
+                                    <button name="action_add_selected" type="object"
+                                            string="إضافة المحدد" class="btn-primary"
+                                            invisible="state in ('done', 'cancelled')"/>
+                                    <label for="customer_count" class="mb-0 mx-2 ms-5"/>
+                                    <field name="customer_count" class="oe_inline"/>
+                            </div>
+                            <field name="line_ids">
+                                <list editable="bottom" create="0" delete="0">
+                                    <field name="serial"/>
+                                    <field name="added" column_invisible="1"/>
+                                    <field name="selected" readonly="added"/>
+                                    <field name="partner_id" readonly="1"/>
+                                    <field name="balance" readonly="1"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="مطلوب مطابقة">
+                            <div class="d-flex align-items-center mb-2">
+                                <label for="select_all_print" class="mb-0 me-2"/>
+                                <field name="select_all_print"/>
+                            </div>
+                            <field name="request_ids">
+                                <list editable="bottom" create="0">
+                                    <field name="print_selected"/>
+                                    <field name="partner_id" readonly="1"/>
+                                    <field name="current_balance" readonly="1"/>
+                                    <field name="user_id" readonly="approval_state == 'done'"/>
+                                    <field name="company_id" readonly="approval_state == 'done'"/>
+                                    <field name="responsible_id" options="{'no_create': True}"
+                                           optional="show"/>
+                                    <field name="supervisor_id" options="{'no_create': True}"
+                                           optional="show"/>
+                                    <field name="reconcile_date"/>
+                                    <field name="balance_at_date"/>
+                                    <field name="customer_balance"/>
+                                    <field name="difference"/>
+                                    <field name="match_state" widget="badge"
+                                           decoration-success="match_state == 'matched'"
+                                           decoration-danger="match_state == 'unmatched'"/>
+                                    <field name="approved_accounts" readonly="1"/>
+                                    <field name="approved_sales" readonly="1"/>
+                                    <field name="approved_papers" readonly="1"/>
+                                    <field name="approval_state" widget="badge"
+                                           decoration-success="approval_state == 'done'"
+                                           decoration-info="approval_state == 'draft'"/>
+                                    <field name="papers_file" widget="binary"
+                                           filename="papers_filename"/>
+                                    <field name="papers_filename" column_invisible="1"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_reconciliation_period_list" model="ir.ui.view">
+        <field name="name">reconciliation.period.list</field>
+        <field name="model">reconciliation.period</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="date"/>
+                <field name="period_type"/>
+                <field name="years_count"/>
+                <field name="customer_count"/>
+                <field name="state" widget="badge"
+                       decoration-info="state == 'draft'"
+                       decoration-warning="state == 'in_progress'"
+                       decoration-success="state == 'done'"
+                       decoration-danger="state == 'cancelled'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_reconciliation_period_search" model="ir.ui.view">
+        <field name="name">reconciliation.period.search</field>
+        <field name="model">reconciliation.period</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <filter name="filter_draft" string="مسودة" domain="[('state', '=', 'draft')]"/>
+                <filter name="filter_in_progress" string="قيد التنفيذ" domain="[('state', '=', 'in_progress')]"/>
+                <filter name="filter_done" string="منتهي" domain="[('state', '=', 'done')]"/>
+                <filter name="filter_cancelled" string="ملغي" domain="[('state', '=', 'cancelled')]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter name="group_state" string="الحالة" context="{'group_by': 'state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_reconciliation_period" model="ir.actions.act_window">
+        <field name="name">المطابقات</field>
+        <field name="res_model">reconciliation.period</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="view_reconciliation_request_list" model="ir.ui.view">
+        <field name="name">reconciliation.request.list</field>
+        <field name="model">reconciliation.request</field>
+        <field name="arch" type="xml">
+            <list>
+                <header>
+                    <button name="action_approve_sales" type="object"
+                            string="اعتماد مبيعات"/>
+                    <button name="action_approve_papers" type="object"
+                            string="اعتماد أوراق"/>
+                    <button name="action_approve_accounts" type="object"
+                            string="اعتماد حسابات"/>
+                </header>
+                <field name="period_id"/>
+                <field name="partner_name"/>
+                <field name="user_id"/>
+                <field name="team_id"/>
+                <field name="company_id"/>
+                <field name="current_balance"/>
+                <field name="responsible_id" optional="show"/>
+                <field name="supervisor_id" optional="show"/>
+                <field name="reconcile_date"/>
+                <field name="balance_at_date"/>
+                <field name="customer_balance"/>
+                <field name="difference"/>
+                <field name="match_state" widget="badge"
+                       decoration-success="match_state == 'matched'"
+                       decoration-danger="match_state == 'unmatched'"/>
+                <field name="approved_accounts"/>
+                <field name="approved_sales"/>
+                <field name="approved_papers"/>
+                <field name="approval_state" widget="badge"
+                       decoration-success="approval_state == 'done'"
+                       decoration-info="approval_state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_reconciliation_request_form" model="ir.ui.view">
+        <field name="name">reconciliation.request.form</field>
+        <field name="model">reconciliation.request</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <header>
+                    <button name="action_approve_sales" type="object"
+                            string="اعتماد مبيعات" class="btn-primary"
+                            invisible="approved_sales"/>
+                    <button name="action_approve_papers" type="object"
+                            string="اعتماد أوراق" class="btn-primary"
+                            invisible="approved_papers"/>
+                    <button name="action_approve_accounts" type="object"
+                            string="اعتماد حسابات" class="btn-primary"
+                            invisible="approved_accounts"/>
+                    <button name="action_reset_approvals" type="object"
+                            string="إلغاء الاعتمادات"
+                            invisible="not (approved_sales or approved_papers or approved_accounts)"/>
+                    <field name="approval_state" widget="statusbar"
+                           statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="بيانات العميل">
+                            <field name="period_id"/>
+                            <field name="partner_id" readonly="approval_state == 'done'"/>
+                            <field name="user_id" options="{'no_create': True}" readonly="approval_state == 'done'"/>
+                            <field name="responsible_id" options="{'no_create': True}"/>
+                            <field name="supervisor_id" options="{'no_create': True}"/>
+                            <field name="company_id" options="{'no_create': True}" readonly="approval_state == 'done'" groups="base.group_multi_company"/>
+                            <field name="company_id" invisible="1" groups="!base.group_multi_company"/>
+                            <field name="team_id"/>
+                        </group>
+                        <group string="الأرصدة">
+                            <field name="current_balance" readonly="approval_state == 'done'"/>
+                            <field name="reconcile_date"/>
+                            <field name="balance_at_date"/>
+                            <field name="customer_balance"/>
+                            <field name="difference"/>
+                            <field name="match_state" widget="badge"
+                                   decoration-success="match_state == 'matched'"
+                                   decoration-danger="match_state == 'unmatched'"/>
+                        </group>
+                    </group>
+                    <group string="الاعتمادات">
+                        <field name="approved_accounts" readonly="1"/>
+                        <field name="approved_sales" readonly="1"/>
+                        <field name="approved_papers" readonly="1"/>
+                        <field name="papers_file" widget="binary"
+                               filename="papers_filename"/>
+                        <field name="papers_filename" invisible="1"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_reconciliation_request_search" model="ir.ui.view">
+        <field name="name">reconciliation.request.search</field>
+        <field name="model">reconciliation.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_name"/>
+                <field name="user_id"/>
+                <field name="company_id"/>
+                <field name="team_id"/>
+                <filter name="filter_draft" string="مسودة"
+                        domain="[('approval_state', '=', 'draft')]"/>
+                <filter name="filter_done" string="منتهي"
+                        domain="[('approval_state', '=', 'done')]"/>
+                <separator/>
+                <filter name="filter_matched" string="مطابق"
+                        domain="[('match_state', '=', 'matched')]"/>
+                <filter name="filter_unmatched" string="غير مطابق"
+                        domain="[('match_state', '=', 'unmatched')]"/>
+                <group expand="0" string="تجميع حسب">
+                    <filter name="group_partner" string="العميل"
+                            context="{'group_by': 'partner_name'}"/>
+                    <filter name="group_user" string="المندوب"
+                            context="{'group_by': 'user_id'}"/>
+                    <filter name="group_company" string="الشركة"
+                            context="{'group_by': 'company_id'}"/>
+                    <filter name="group_team" string="فريق المبيعات"
+                            context="{'group_by': 'team_id'}"/>
+                    <filter name="group_state" string="حالة المطابقة"
+                            context="{'group_by': 'match_state'}"/>
+                    <filter name="group_approval_state" string="حالة التقرير"
+                            context="{'group_by': 'approval_state'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_reconciliation_request" model="ir.actions.act_window">
+        <field name="name">تقرير المطابقات</field>
+        <field name="res_model">reconciliation.request</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_reconciliation_root" name="مطابقات العملاء"/>
+    <menuitem id="menu_reconciliation_period" name="المطابقات"
+              parent="menu_reconciliation_root"
+              action="action_reconciliation_period"/>
+    <menuitem id="menu_reconciliation_request" name="تقرير المطابقات"
+              parent="menu_reconciliation_root"
+              action="action_reconciliation_request"/>
+</odoo>

@@ -1,0 +1,166 @@
+<odoo>
+    <!-- ورق A4 عرضي عشان الجدول فيه أعمدة كتير -->
+    <record id="paperformat_reconciliation_landscape" model="report.paperformat">
+        <field name="name">Reconciliation A4 Landscape</field>
+        <field name="format">A4</field>
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">35</field>
+        <field name="margin_bottom">20</field>
+        <field name="margin_left">8</field>
+        <field name="margin_right">8</field>
+        <field name="header_spacing">30</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <record id="action_report_salesperson" model="ir.actions.report">
+        <field name="name">طباعة مطابقة</field>
+        <field name="model">reconciliation.period</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">reconciliation_period.report_salesperson_document</field>
+        <field name="report_file">reconciliation_period.report_salesperson_document</field>
+        <field name="print_report_name">'Reconciliation - %s' % (object.name or '')</field>
+        <field name="paperformat_id" ref="paperformat_reconciliation_landscape"/>
+        <field name="binding_model_id" ref="model_reconciliation_period"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_salesperson_document">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-foreach="o.get_salesperson_groups()" t-as="group">
+                    <t t-call="web.external_layout">
+                        <div class="page" style="direction: rtl; text-align: right; font-size: 12px;">
+                            <style>
+                                .rc-title { background: #1f3a5f; color: #ffffff; padding: 10px 16px; border-radius: 4px; margin-bottom: 12px; }
+                                .rc-title h3 { margin: 0; font-weight: bold; color: #ffffff; }
+                                .rc-info { width: 100%; border-collapse: separate; border-spacing: 6px 0; margin-bottom: 12px; }
+                                .rc-info td { background: #f3f6fa; border: 1px solid #d5dde8; border-radius: 4px; padding: 6px 10px; width: 25%; vertical-align: top; }
+                                .rc-info .rc-label { color: #6b7a8c; font-size: 10px; display: block; }
+                                .rc-info .rc-value { font-weight: bold; font-size: 13px; color: #1f3a5f; }
+                                .rc-table { width: 100%; border-collapse: collapse; }
+                                .rc-table th { background: #1f3a5f; color: #ffffff; padding: 6px 4px; border: 1px solid #1f3a5f; text-align: center; font-size: 11px; }
+                                .rc-table td { padding: 5px 4px; border: 1px solid #d5dde8; text-align: center; }
+                                .rc-table tr.rc-even td { background: #f8fafc; }
+                                .rc-table td.rc-name { text-align: right; }
+                                .rc-table tr.rc-total td { background: #e8eef6; font-weight: bold; border-top: 2px solid #1f3a5f; }
+                                .rc-badge { padding: 2px 8px; border-radius: 10px; font-size: 10px; font-weight: bold; }
+                                .rc-ok { background: #d4edda; color: #155724; }
+                                .rc-bad { background: #f8d7da; color: #721c24; }
+                                .rc-draft { background: #e2e3e5; color: #383d41; }
+                                .rc-sign { width: 100%; margin-top: 30px; border-collapse: separate; border-spacing: 10px 0; }
+                                .rc-sign td { border-top: 1px solid #1f3a5f; text-align: center; padding-top: 6px; width: 25%; font-weight: bold; }
+                            </style>
+
+                            <div class="rc-title">
+                                <h3>تقرير المطابقات المطلوبة</h3>
+                            </div>
+
+                            <table class="rc-info">
+                                <tr>
+                                    <td>
+                                        <span class="rc-label">الفترة</span>
+                                        <span class="rc-value" t-out="o.name"/>
+                                    </td>
+                                    <td>
+                                        <span class="rc-label">التاريخ</span>
+                                        <span class="rc-value" t-field="o.date"/>
+                                    </td>
+                                    <td>
+                                        <span class="rc-label">المندوب</span>
+                                        <span class="rc-value">
+                                            <t t-if="group['user']" t-out="group['user'].name"/>
+                                            <t t-else="">بدون مندوب</t>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="rc-label">عدد العملاء</span>
+                                        <span class="rc-value" t-out="len(group['requests'])"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="rc-label">مسئول المندوب</span>
+                                        <span class="rc-value">
+                                            <t t-if="group['responsible']" t-out="group['responsible'].name"/>
+                                            <t t-else="">-</t>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="rc-label">المشرف</span>
+                                        <span class="rc-value">
+                                            <t t-if="group['supervisor']" t-out="group['supervisor'].name"/>
+                                            <t t-else="">-</t>
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="rc-label">الشركة</span>
+                                        <span class="rc-value" t-out="o.company_id.name"/>
+                                    </td>
+                                    <td>
+                                        <span class="rc-label">حالة المطابقة</span>
+                                        <span class="rc-value" t-field="o.state"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <table class="rc-table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 3%;">#</th>
+                                        <th>العميل</th>
+                                        <th>الرصيد الحالي</th>
+                                        <th>تاريخ المطابقة</th>
+                                        <th>رصيدنا يوم المطابقة</th>
+                                        <th>رصيد العميل (يدوي)</th>
+                                        <th>الفرق</th>
+                                        <th>حالة المطابقة</th>
+                                        <th>حالة التقرير</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="group['requests']" t-as="r">
+                                        <tr t-att-class="'rc-even' if r_index % 2 else ''">
+                                            <td><span t-out="r_index + 1"/></td>
+                                            <td class="rc-name"><span t-out="r.partner_name"/></td>
+                                            <td><span t-out="'{:,.2f}'.format(r.current_balance)"/></td>
+                                            <td><span t-field="r.reconcile_date"/></td>
+                                            <td><span t-out="'{:,.2f}'.format(r.balance_at_date)"/></td>
+                                            <td><span t-out="'{:,.2f}'.format(r.customer_balance)"/></td>
+                                            <td><span t-out="'{:,.2f}'.format(r.difference)"/></td>
+                                            <td>
+                                                <span t-att-class="'rc-badge rc-ok' if r.match_state == 'matched' else 'rc-badge rc-bad'"
+                                                      t-field="r.match_state"/>
+                                            </td>
+                                            <td>
+                                                <span t-att-class="'rc-badge rc-ok' if r.approval_state == 'done' else 'rc-badge rc-draft'"
+                                                      t-field="r.approval_state"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+                                    <tr class="rc-total">
+                                        <td colspan="2">الإجمالي</td>
+                                        <td><span t-out="'{:,.2f}'.format(group['total_current'])"/></td>
+                                        <td></td>
+                                        <td><span t-out="'{:,.2f}'.format(group['total_at_date'])"/></td>
+                                        <td><span t-out="'{:,.2f}'.format(group['total_customer'])"/></td>
+                                        <td><span t-out="'{:,.2f}'.format(group['total_difference'])"/></td>
+                                        <td colspan="2"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table class="rc-sign">
+                                <tr>
+                                    <td>المندوب</td>
+                                    <td>مسئول المندوب</td>
+                                    <td>المشرف</td>
+                                    <td>الحسابات</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

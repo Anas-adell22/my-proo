@@ -1,0 +1,16 @@
+<odoo>
+    <record id="balance_type_negative" model="reconciliation.balance.type">
+        <field name="name">سالب</field>
+        <field name="code">negative</field>
+    </record>
+    <record id="balance_type_positive" model="reconciliation.balance.type">
+        <field name="name">موجب</field>
+        <field name="code">positive</field>
+    </record>
+    <record id="balance_type_zero" model="reconciliation.balance.type">
+        <field name="name">صفر</field>
+        <field name="code">zero</field>
+    </record>
+
+    <function model="reconciliation.period.option" name="generate_options"/>
+</odoo>
