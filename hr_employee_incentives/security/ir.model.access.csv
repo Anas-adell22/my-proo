@@ -1,0 +1,15 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_penalty_type_manager,penalty.type,model_penalty_type,,1,1,1,1
+access_reward_type_manager,reward.type,model_reward_type,,1,1,1,1
+access_employee_penalty_manager,employee.penalty,model_employee_penalty,,1,1,1,1
+access_employee_reward_manager,employee.reward,model_employee_reward,,1,1,1,1
+access_hr_grievance_user,hr.grievance.user,model_hr_grievance,base.group_user,1,1,1,0
+access_hr_grievance_manager,hr.grievance.manager,model_hr_grievance,hr.group_hr_manager,1,1,1,1
+access_hr_grievance_line_user,hr.grievance.line.user,model_hr_grievance_line,base.group_user,1,1,1,1
+access_hr_grievance_line_manager,hr.grievance.line.manager,model_hr_grievance_line,hr.group_hr_manager,1,1,1,1
+access_hr_petition_user,hr.petition.user,model_hr_petition,base.group_user,1,1,1,0
+access_hr_petition_manager,hr.petition.manager,model_hr_petition,hr.group_hr_manager,1,1,1,1
+access_hr_petition_line_user,hr.petition.line.user,model_hr_petition_line,base.group_user,1,1,1,1
+access_hr_petition_line_manager,hr.petition.line.manager,model_hr_petition_line,hr.group_hr_manager,1,1,1,1
+access_payroll_receipt_user,payroll.receipt.user,model_payroll_receipt,base.group_user,1,0,0,0
+access_payroll_receipt_manager,payroll.receipt.manager,model_payroll_receipt,hr.group_hr_manager,1,1,1,1
